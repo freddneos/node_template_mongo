@@ -1,7 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const dbUrl = require('./keys')
 
 const app = express()
+const router = express.Router()
+
+// conectar ao banco
+mongoose.connect(dbUrl.mongoLabUrl, {useNewUrlParser: true})
+const Product = require('../src/models/productModel')
 
 // Carregar as Rotas
 const indexRoute = require('../src/routes/indexRoute')
