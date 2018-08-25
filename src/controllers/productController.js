@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // instancia do meu schema0
 const Product = mongoose.model('Product')
 
-exports.post = (req, res, _next) => {
+exports.post = (req, res, next) => {
 // devolvendo o status de ok mais informações
 	var product = new Product(req.body)
 	product.save()

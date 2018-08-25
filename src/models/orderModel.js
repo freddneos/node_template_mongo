@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const schema = new Schema({
+	// Referenciando o schema de cliente
 	customer: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Customer'
@@ -23,7 +24,7 @@ const schema = new Schema({
 		enum: ['created','done'],
 		default: 'created'
 	},
-	// Referenciando costumer - chave estrangeira
+	// Array de itens, não existe a necessidade de criação de novo documento ou coleção 
 	items: [{
 		itemNumber: {
 			type: Number,
@@ -33,6 +34,7 @@ const schema = new Schema({
 			type: Number,
 			require: true
 		},
+		// referenciand o schema de produtos
 		product: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Product'

@@ -21,4 +21,4 @@ const schema = new Schema({
 		required: true
 	}
 })
-module.exports = mongoose.model('Costumer', schema)
+module.exports = mongoose.model('Customer', schema)
