@@ -9,10 +9,13 @@ const router = express.Router()
 // conectar ao banco
 mongoose.connect(dbUrl.mongoLabUrl, {useNewUrlParser: true})
 const Product = require('../src/models/productModel')
+const Customer = require('../src/models/customerModel')
+const Order = require('../src/models/OrderModel')
 
 // Carregar as Rotas
 const indexRoute = require('../src/routes/indexRoute')
 const productRoute = require('../src/routes/productRoute')
+const customerRoute = require('../src/routes/customerRoute')
 
 //  parseando o resultado em json
 app.use(bodyParser.json())
@@ -20,5 +23,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // dizendo a app para usar esta rota
 app.use('/', indexRoute)
-app.use('/products', productRoute)
+app.use('/products' , productRoute)
+app.use('/customers', customerRoute)
 module.exports = app
