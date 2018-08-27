@@ -5,6 +5,7 @@ const Product = mongoose.model('Product')
 
 exports.post = (req, res, next) => {
 // devolvendo o status de ok mais informações
+	//função de upload aqui!!!!  https://www.npmjs.com/package/express-fileupload
 	var product = new Product(req.body)
 	product.save()
 		.then(x => {

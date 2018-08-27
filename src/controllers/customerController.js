@@ -19,7 +19,9 @@ exports.post = (req, res, next) => {
 			res.status(201).send({
 				message: 'cliente cadastrado com sucesso'
 			})
-			emailService.send(req.body.email,'Novo Cadastro',`Cadastro realizado com sucesso, Obrigado ${req.body.name}`)
+			emailService.send(req.body.email,
+				'Novo Cadastro',
+				`Cadastro realizado com sucesso, Obrigado ${req.body.name}`)
 		}).catch(e => {
 			res.status(400).send({
 				message: 'Falha ao cadastrar cliente',

@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const fileUpload = require('express-fileupload')
 const dbUrl = require('./keys')
 
 const app = express()
@@ -18,9 +19,11 @@ const productRoute = require('../src/routes/productRoute')
 const customerRoute = require('../src/routes/customerRoute')
 const orderRoute = require('../src/routes/orderRoute')
 
+
 //  parseando o resultado em json
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(fileUpload())
 
 // dizendo a app para usar esta rota
 app.use('/', indexRoute)
