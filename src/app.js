@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dbUrl = require('./keys')
-const md5 = require('md5')
 
 const app = express()
 const router = express.Router()
