@@ -1,5 +1,6 @@
 // Todos os meu controllers
 const mongoose = require('mongoose')
+const emailService = require('../services/emailService')
 // instancia do meu schema0
 const Customer = mongoose.model('Customer')
 const md5 = require('md5')
@@ -18,6 +19,7 @@ exports.post = (req, res, next) => {
 			res.status(201).send({
 				message: 'cliente cadastrado com sucesso'
 			})
+			emailService.send(req.body.email,'Novo Cadastro',`Cadastro realizado com sucesso, Obrigado ${req.body.name}`)
 		}).catch(e => {
 			res.status(400).send({
 				message: 'Falha ao cadastrar cliente',
