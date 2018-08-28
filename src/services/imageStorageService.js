@@ -26,7 +26,7 @@ exports.send = (fileUrl) => {
         }
 
         if(data){
-            console.log(`uploaded in :  $(data.location)`)
+            console.log(`uploaded in :  ${data.location}`)
         }
     })
 

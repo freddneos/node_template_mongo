@@ -4,14 +4,19 @@ const mongoose = require('mongoose')
 const Product = mongoose.model('Product')
 const fileUpload = require('../services/fileUploadService')
 
-exports.post = (req, res, next) => {
+exports.post = async (req, res, next) => {
 // devolvendo o status de ok mais informações
 var file = req.files.img
-	fileUpload.up(file,req.body.slug)	
+var fileUrl = 	await fileUpload.up(file,req.body.slug)	
 
-var product = new Product(req.body)
-	
-
+var product = new Product({
+	tile: req.body.name,
+	description: req.body.description,
+	price: req.body.price,
+	tags: req.body.tags,
+	slug: req.body.slug,
+	img: fileUrl
+})
 	product.save()
 		.then(x => {
 			res.status(201).send({

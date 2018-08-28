@@ -30,6 +30,9 @@ const schema = new Schema({
 		required: true,
 		default: true
 	},
+	img: {
+		type: String,
+	},
 	//  nuvem de tags em array de strings
 	tags: [{
 		type: String,
