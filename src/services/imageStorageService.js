@@ -10,5 +10,24 @@ AWS.config.update({
     secretAccessKey: keys.amazon_s3_secret_acess
 })
 
-var S3 = new AWS.S3()
-var filePath = ""
+exports.send = (fileUrl) => {
+
+    var S3 = new AWS.S3()
+    var filePath = fileUrl
+
+    var params = {
+        Bucket : 'neosbalta',
+        Body : fs.createReadStream(filePath),
+        Key : "folder/"+Date.now()+"_"+path.basename(filePath)
+    }
+    S3.upload(params,function(err,data){
+        if(err){
+            console.log("Error" , err)
+        }
+
+        if(data){
+            console.log(`uploaded in :  $(data.location)`)
+        }
+    })
+
+}

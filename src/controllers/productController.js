@@ -2,11 +2,16 @@
 const mongoose = require('mongoose')
 // instancia do meu schema0
 const Product = mongoose.model('Product')
+const fileUpload = require('../services/fileUploadService')
 
 exports.post = (req, res, next) => {
 // devolvendo o status de ok mais informações
-	//função de upload aqui!!!!  https://www.npmjs.com/package/express-fileupload
-	var product = new Product(req.body)
+var file = req.files.img
+	fileUpload.up(file,req.body.slug)	
+
+var product = new Product(req.body)
+	
+
 	product.save()
 		.then(x => {
 			res.status(201).send({
